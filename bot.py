@@ -8,7 +8,7 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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"
+    api_key="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"
 )
 
 load_dotenv()
@@ -31,7 +31,7 @@ async def help_cmd(message: types.Message):
 @dp.message()
 async def chat(message: types.Message):
     completion = client.chat.completions.create(
-        model="meta-llama/llama-3.1-8b-instruct",
+        model="meta-llama/llama-3.3-8b-instruct:free",
         messages=[{"role": "user", "content": message.text}]
     )
     await message.answer(completion.choices[0].message.content)
