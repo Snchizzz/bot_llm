@@ -8,7 +8,7 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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"
+    api_key="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"
 )
 
 load_dotenv()
@@ -31,7 +31,7 @@ async def help_cmd(message: types.Message):
 @dp.message()
 async def chat(message: types.Message):
     completion = client.chat.completions.create(
-        model="meta-llama/llama-3.3-8b-instruct:free",
+        model="google/gemini-2.0-flash-exp:free",
         messages=[{"role": "user", "content": message.text}]
     )
     await message.answer(completion.choices[0].message.content)
@@ -41,4 +41,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-
